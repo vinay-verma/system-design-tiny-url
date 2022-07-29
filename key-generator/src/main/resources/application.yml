@@ -1,0 +1,4 @@
+key-generator:
+  name: 'TwitterSnowflakeKeyGenerator'
+  node:
+    id: 1L
