@@ -1,4 +1,7 @@
+server:
+  port: 8093
+
 key-generator:
   name: 'TwitterSnowflakeKeyGenerator'
   node:
-    id: 1L
+    id: 1001

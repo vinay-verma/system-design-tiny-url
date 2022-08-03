@@ -1,12 +1,10 @@
 package com.verma.keygenerator.service;
 
-import com.verma.keygenerator.generators.KeyGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.Set;
 
-@Service
-public class KeyGeneratorService {
+public interface KeyGeneratorService {
 
-    @Autowired
-    private KeyGenerator keyGenerator;
+    String next();
+
+    Set<String> next(int noOfKeys);
 }

@@ -17,10 +17,10 @@ public class KeyGeneratorFactory {
                 TwitterSnowflakeKeyGenerator.TwitterSnowflakeKeyGeneratorConfig config =
                         TwitterSnowflakeKeyGenerator.TwitterSnowflakeKeyGeneratorConfig
                         .builder()
-                        .nodeId(nodeId)
+                        .withNodeId(nodeId)
                         .build();
                 return new TwitterSnowflakeKeyGenerator(config);
         }
-        throw new IllegalArgumentException(String.format("No key generator registered with name %s", generator));
+        throw new IllegalArgumentException(String.format("No key generator found with name %s", generator));
     }
 }

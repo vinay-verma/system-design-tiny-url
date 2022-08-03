@@ -62,7 +62,7 @@ public class TwitterSnowflakeKeyGenerator implements KeyGenerator {
         return Instant.now().toEpochMilli() - CUSTOM_EPOCH;
     }
 
-    @Builder
+    @Builder(setterPrefix = "with")
     @Getter
     public static class TwitterSnowflakeKeyGeneratorConfig implements KeyGeneratorConfig {
         @NonNull
