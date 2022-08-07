@@ -1,7 +1,7 @@
-package com.verma.keygenerator.config;
+package com.zemoso.systemdesignbootcamp.keygenerator.config;
 
-import com.verma.keygenerator.generators.KeyGenerator;
-import com.verma.keygenerator.generators.KeyGeneratorFactory;
+import com.zemoso.systemdesignbootcamp.keygenerator.generators.KeyGenerator;
+import com.zemoso.systemdesignbootcamp.keygenerator.generators.KeyGeneratorFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

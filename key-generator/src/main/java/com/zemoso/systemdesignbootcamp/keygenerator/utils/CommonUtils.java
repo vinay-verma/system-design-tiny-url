@@ -1,4 +1,4 @@
-package com.verma.keygenerator.utils;
+package com.zemoso.systemdesignbootcamp.keygenerator.utils;
 
 import lombok.NonNull;
 

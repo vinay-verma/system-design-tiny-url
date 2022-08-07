@@ -1,4 +1,4 @@
-package com.verma.keygenerator;
+package com.zemoso.systemdesignbootcamp.keygenerator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

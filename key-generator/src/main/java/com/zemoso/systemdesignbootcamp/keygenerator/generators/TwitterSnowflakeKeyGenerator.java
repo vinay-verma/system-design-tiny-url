@@ -1,4 +1,4 @@
-package com.verma.keygenerator.generators;
+package com.zemoso.systemdesignbootcamp.keygenerator.generators;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.verma'
+group = 'com.zemoso.systemdesignbootcamp'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -25,6 +25,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     compileOnly 'org.projectlombok:lombok'

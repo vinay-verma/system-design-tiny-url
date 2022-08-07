@@ -1,7 +1,7 @@
-package com.verma.keygenerator.service.impl;
+package com.zemoso.systemdesignbootcamp.keygenerator.service.impl;
 
-import com.verma.keygenerator.generators.KeyGenerator;
-import com.verma.keygenerator.service.KeyGeneratorService;
+import com.zemoso.systemdesignbootcamp.keygenerator.generators.KeyGenerator;
+import com.zemoso.systemdesignbootcamp.keygenerator.service.KeyGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
