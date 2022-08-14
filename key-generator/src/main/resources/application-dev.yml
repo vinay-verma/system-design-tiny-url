@@ -1,0 +1,8 @@
+github-client-id: ''
+github-client-secret: ''
+
+node-id: 1001
+key-generation-strategy: 'TwitterSnowflakeKeyGenerator'
+
+redis-host-url: localhost
+redis-port: 6379

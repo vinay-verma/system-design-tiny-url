@@ -14,3 +14,7 @@ key-generator:
   name: ${key-generation-strategy}
   node:
     id: ${node-id}
+
+redis:
+  hostName: ${redis-host-url}
+  port: ${redis-port}
