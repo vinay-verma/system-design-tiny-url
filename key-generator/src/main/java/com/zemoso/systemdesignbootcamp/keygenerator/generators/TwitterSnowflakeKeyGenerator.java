@@ -3,9 +3,11 @@ package com.zemoso.systemdesignbootcamp.keygenerator.generators;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.Instant;
 
+@Slf4j
 public class TwitterSnowflakeKeyGenerator implements KeyGenerator {
     private static final int UNUSED_BITS = 1; // Sign bit, Unused (always set to 0)
     private static final int EPOCH_BITS = 41;
@@ -37,6 +39,7 @@ public class TwitterSnowflakeKeyGenerator implements KeyGenerator {
             throw new IllegalArgumentException("Invalid system clock !!");
         } else if (currentTimeStamp == lastTimeStamp) {
             sequence = (sequence + 1) & MAX_SEQUENCE;
+            log.debug("Same current and last timestamps, increment sequence {}", sequence);
             if (sequence == 0) {
                 // used all sequence upto allowed limit, wait for next time in millis
                 currentTimeStamp = waitForNextCurrentTimestamp(currentTimeStamp);
@@ -53,6 +56,7 @@ public class TwitterSnowflakeKeyGenerator implements KeyGenerator {
 
     private long waitForNextCurrentTimestamp(long currentTimeStamp) {
         while(currentTimeStamp == lastTimeStamp) {
+            log.debug("wait for next current timestamp");
             currentTimeStamp = currentTimeStamp();
         }
         return currentTimeStamp;

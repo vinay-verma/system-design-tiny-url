@@ -1,10 +1,15 @@
 package com.zemoso.systemdesignbootcamp.keygenerator.service;
 
-import java.util.Set;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 public interface KeyGeneratorService {
 
     String next();
 
-    Set<String> next(int noOfKeys);
+    Collection<String> generateBulk(int noOfKeys);
+
+    String generate();
+
+    CompletableFuture<Collection<String>> replenishMoreIfRequired();
 }
