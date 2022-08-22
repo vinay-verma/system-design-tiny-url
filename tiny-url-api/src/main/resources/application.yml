@@ -1,0 +1,22 @@
+server:
+  shutdown: graceful
+  port: 8095
+
+spring:
+  datasource:
+    url: jdbc:mysql://${mysql-url}/${mysql-db}
+    username: ${mysql-user}
+    password: ${mysql-password}
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    out-of-order: true
+    ignoreMissingMigrations: true
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${github-client-id}
+            clientSecret: ${github-client-secret}
+
