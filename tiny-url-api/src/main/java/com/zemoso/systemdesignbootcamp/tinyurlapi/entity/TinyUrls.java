@@ -1,32 +1,29 @@
 package com.zemoso.systemdesignbootcamp.tinyurlapi.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.zemoso.systemdesignbootcamp.tinyurlapi.utils.Constants;
+import lombok.Data;
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
-@Entity
-@Table(name = "tiny_urls")
+@Data
+@Document(Constants.COLLECTION_TINY_URLS)
 public class TinyUrls implements Serializable {
     @Id
     private UUID id;
 
-    @Column(name = "long_url", nullable = false, updatable = false)
+    @BsonProperty("long_url")
     private String longUrl;
 
-    @Column(name = "tiny_url", nullable = false, updatable = false)
+    @BsonProperty("tiny_url")
     private String tinyUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner", referencedColumnName = "id", updatable = false)
-    private Users users;
+    private UUID owner;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+    @BsonProperty("created_at")
+    private Date createdAt = new Date();
 }

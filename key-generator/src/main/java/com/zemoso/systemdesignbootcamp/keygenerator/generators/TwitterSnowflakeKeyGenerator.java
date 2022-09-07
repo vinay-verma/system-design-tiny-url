@@ -19,8 +19,8 @@ public class TwitterSnowflakeKeyGenerator implements KeyGenerator {
 
     private static final long CUSTOM_EPOCH = 1658534400000L; // 2022-07-23T00:00:00.000Z
 
-    private volatile long lastTimeStamp = -1L;
-    private volatile long sequence = 0L;
+    private long lastTimeStamp = -1L;
+    private long sequence = 0L;
 
     private final TwitterSnowflakeKeyGeneratorConfig config;
 
@@ -32,7 +32,7 @@ public class TwitterSnowflakeKeyGenerator implements KeyGenerator {
     }
 
     @Override
-    public long next() {
+    public synchronized long next() {
         long currentTimeStamp = currentTimeStamp();
 
         if (currentTimeStamp < lastTimeStamp) {

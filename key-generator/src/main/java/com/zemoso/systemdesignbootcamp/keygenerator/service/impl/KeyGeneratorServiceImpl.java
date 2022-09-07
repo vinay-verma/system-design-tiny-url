@@ -63,7 +63,7 @@ public class KeyGeneratorServiceImpl implements KeyGeneratorService {
     @Override
     public Collection<String> generateBulk(int noOfKeys) {
         return IntStream.range(0, noOfKeys)
-//                .parallel()
+                .parallel()
                 .mapToObj(i -> generate())
                 .collect(Collectors.toSet());
     }

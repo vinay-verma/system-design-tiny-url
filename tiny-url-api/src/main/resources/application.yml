@@ -3,15 +3,9 @@ server:
   port: 8095
 
 spring:
-  datasource:
-    url: jdbc:mysql://${mysql-url}/${mysql-db}
-    username: ${mysql-user}
-    password: ${mysql-password}
-  flyway:
-    enabled: true
-    baseline-on-migrate: true
-    out-of-order: true
-    ignoreMissingMigrations: true
+  data:
+    mongodb:
+      uri: mongodb://${mongodb-user}:${mongodb-password}@${mongodb-url}/${mongodb-schema}
   security:
     oauth2:
       client:
@@ -19,4 +13,10 @@ spring:
           github:
             clientId: ${github-client-id}
             clientSecret: ${github-client-secret}
+
+mongock:
+  migration-scan-package:
+    - com.zemoso.systemdesignbootcamp.tinyurlapi.changelogs
+  track-ignored: true
+  transaction-enabled: true
 

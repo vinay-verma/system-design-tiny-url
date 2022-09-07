@@ -1,43 +1,24 @@
 package com.zemoso.systemdesignbootcamp.tinyurlapi.entity;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.Hibernate;
+import com.zemoso.systemdesignbootcamp.tinyurlapi.utils.Constants;
+import lombok.Data;
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.Date;
 import java.util.UUID;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
-@Entity
-@Table(name = "users")
+@Data
+@Document(Constants.COLLECTION_USERS)
 public class Users implements Serializable {
 
     @Id
     private UUID uuid;
 
-    @Column(nullable = false, updatable = false)
     private String email;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Users users = (Users) o;
-        return uuid != null && Objects.equals(uuid, users.uuid);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
+    @BsonProperty("created_at")
+    private Date createdAt = new Date();
 }

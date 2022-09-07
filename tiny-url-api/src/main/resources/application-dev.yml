@@ -1,7 +1,7 @@
-mysql-url: localhost:3306
-mysql-db: tinyurldb
-mysql-user: tinyuser
-mysql-password: password
+mongodb-url: localhost:27017
+mongodb-schema: tinyurldb
+mongodb-user: tinyuser
+mongodb-password: password
 
 github-client-id: '9d8c01dd4e8fa7fd0603'
 github-client-secret: '924746310d082820e835fed48e6fcfe19edb2c85'

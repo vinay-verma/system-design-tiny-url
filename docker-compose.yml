@@ -1,7 +1,7 @@
 version: "3"
 volumes:
   redis-data:
-  mysql-data:
+  mongodb-data:
 services:
   redis:
     image: "redis:alpine"
@@ -9,16 +9,15 @@ services:
       - "6379:6379"
     volumes:
       - redis-data:/data
-  mysql:
-    image: "mysql:8.0.30"
+  mongo:
+    image: mongo
+    container_name: tiny-url-data
     restart: always
     environment:
-      MYSQL_ROOT_USER: root
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: tinyurldb
-      MYSQL_USER: tinyuser
-      MYSQL_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
     ports:
-      - "3306:3306"
+      - "27017:27017"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongodb-data:/data
