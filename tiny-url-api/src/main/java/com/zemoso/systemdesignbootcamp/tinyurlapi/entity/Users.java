@@ -15,8 +15,6 @@ import java.util.UUID;
 public class Users implements Serializable {
 
     @Id
-    private UUID uuid;
-
     private String email;
 
     @BsonProperty("created_at")

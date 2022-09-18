@@ -1,10 +1,12 @@
+db = db.getSiblingDB('admin');
+db.auth("root", "password");
 db = db.getSiblingDB('tinyurldb');
 db.createUser({
     user: "tinyuser",
     pwd: "password",
     roles: [
         {
-            role: "userAdmin",
+            role: "dbOwner",
             db: "tinyurldb"
         }
     ]

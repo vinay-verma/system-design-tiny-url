@@ -6,6 +6,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://${mongodb-user}:${mongodb-password}@${mongodb-url}/${mongodb-schema}
+      authentication-database: admin
   security:
     oauth2:
       client:
@@ -18,5 +19,12 @@ mongock:
   migration-scan-package:
     - com.zemoso.systemdesignbootcamp.tinyurlapi.changelogs
   track-ignored: true
-  transaction-enabled: true
+#  transaction-enabled: true
+
+short-url-host: ${SHORT-URL-HOST}
+
+urls:
+  key-generator:
+    base: ${KEY-GENERATOR-SERVER-URL}
+    next: '${urls.key-generator.base}/api/v1/key'
 
