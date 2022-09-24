@@ -14,8 +14,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class AuthConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.oauth2Client();
-        http.antMatcher("//api/**")
+        http
+                .antMatcher("//**")
+//                .antMatcher("/actuator/**")
                 .csrf()
                 .disable()
                 .sessionManagement()

@@ -3,8 +3,5 @@ mongodb-schema: tinyurldb
 mongodb-user: tinyuser
 mongodb-password: password
 
-github-client-id: ''
-github-client-secret: ''
-
-KEY-GENERATOR-SERVER-URL: http://localhost:8094
-SHORT-URL-HOST: http://localhost:8092
+KEY-GENERATOR-SERVER-URL: http://localhost:8093
+SHORT-URL-HOST: http://localhost:8095

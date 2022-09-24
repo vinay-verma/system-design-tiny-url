@@ -1,8 +1,11 @@
 package com.zemoso.systemdesignbootcamp.tinyurlapi.entity;
 
 import com.zemoso.systemdesignbootcamp.tinyurlapi.utils.Constants;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,7 +14,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Builder
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(Constants.COLLECTION_TINY_URLS)
 public class TinyUrls implements Serializable {
     @Id
@@ -26,5 +32,5 @@ public class TinyUrls implements Serializable {
     private String owner;
 
     @BsonProperty("created_at")
-    private final Date createdAt = new Date();
+    private Date createdAt;
 }

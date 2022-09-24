@@ -7,13 +7,13 @@ spring:
     mongodb:
       uri: mongodb://${mongodb-user}:${mongodb-password}@${mongodb-url}/${mongodb-schema}
       authentication-database: admin
-  security:
-    oauth2:
-      client:
-        registration:
-          github:
-            clientId: ${github-client-id}
-            clientSecret: ${github-client-secret}
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          github:
+#            clientId: ${github-client-id}
+#            clientSecret: ${github-client-secret}
 
 mongock:
   migration-scan-package:

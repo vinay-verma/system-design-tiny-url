@@ -1,8 +1,11 @@
 package com.zemoso.systemdesignbootcamp.tinyurlapi.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class TinyUrlRequest {
+@Builder
+public class TinyUrlResponse {
+    private String tinyUrl;
     private String url;
 }

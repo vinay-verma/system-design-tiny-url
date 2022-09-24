@@ -4,6 +4,7 @@ volumes:
   mongodb-data:
 services:
   redis:
+    container_name: tiny-url-redis
     image: "redis:alpine"
     ports:
       - "6379:6379"
@@ -11,8 +12,7 @@ services:
       - redis-data:/data
   mongo:
     image: mongo
-    container_name: tiny-url-data
-    restart: always
+    container_name: tiny-url-mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
@@ -21,3 +21,17 @@ services:
     volumes:
       - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - mongodb-data:/data
+  key-generator:
+    image: tiny-url/key-generator
+    container_name: tiny-url-key-generator
+    ports:
+      - "8093:8093"
+    environment:
+      node-id: 101
+      replenish-threshold: 5
+      redis-host-url: redis
+      redis-port: 6379
+      github-client-id: 9d8c01dd4e8fa7fd0603
+      github-client-secret: f4b08329739a23b8858d8c4f531a20e0e472b687
+    depends_on:
+      - redis

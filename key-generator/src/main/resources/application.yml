@@ -1,17 +1,8 @@
 server:
   port: 8093
 
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          github:
-            clientId: ${github-client-id}
-            clientSecret: ${github-client-secret}
-
 key-generator:
-  name: ${key-generation-strategy}
+  name: 'TwitterSnowflakeKeyGenerator'
   node:
     id: ${node-id}
   replenish-threshold: ${key-replenish-threshold:200}

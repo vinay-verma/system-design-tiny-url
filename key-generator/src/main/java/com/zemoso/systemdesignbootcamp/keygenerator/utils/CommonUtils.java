@@ -8,7 +8,7 @@ import java.util.Enumeration;
 
 public class CommonUtils {
 
-    public static int generateNodeIdFromHardwareAddress(@NonNull int maxNodeId) {
+    public static int generateNodeIdFromHardwareAddress(@NonNull Integer maxNodeId) {
         int nodeId;
         try {
             StringBuilder sb = new StringBuilder();

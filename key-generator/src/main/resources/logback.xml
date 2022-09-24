@@ -10,7 +10,7 @@
     <logger name="org.springframework.web.client" level="DEBUG"/>
     <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG"/>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
 </Configuration>
