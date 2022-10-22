@@ -3,5 +3,6 @@ mongodb-schema: tinyurldb
 mongodb-user: tinyuser
 mongodb-password: password
 
+SERVER-PORT: 8095
 KEY-GENERATOR-SERVER-URL: http://localhost:8093
 SHORT-URL-HOST: http://localhost:8095

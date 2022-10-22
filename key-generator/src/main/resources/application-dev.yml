@@ -1,5 +1,7 @@
 node-id: 1001
 key-replenish-threshold: 2
 
+SERVER-PORT: 8093
+
 redis-host-url: localhost
 redis-port: 6379

@@ -1,6 +1,6 @@
 server:
   shutdown: graceful
-  port: 8095
+  port: ${SERVER-PORT:8095}
 
 spring:
   data:

@@ -54,6 +54,11 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+tasks.register('bootRunDev') {
+    dependsOn 'bootRun'
+    bootRun.systemProperty('spring.profiles.active', 'dev')
+}
+
 jib {
     to {
         image = "tiny-url/tiny-url-api"

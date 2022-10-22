@@ -5,13 +5,13 @@ volumes:
 services:
   redis:
     container_name: tiny-url-redis
-    image: "redis:alpine"
+    image: localhost:5001/redis
     ports:
       - "6379:6379"
     volumes:
       - redis-data:/data
   mongo:
-    image: mongo
+    image: localhost:5001/mongo
     container_name: tiny-url-mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -22,7 +22,7 @@ services:
       - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - mongodb-data:/data
   key-generator:
-    image: tiny-url/key-generator
+    image: localhost:5001/key-generator
     container_name: tiny-url-key-generator
     ports:
       - "8093:8093"
@@ -31,12 +31,10 @@ services:
       replenish-threshold: 5
       redis-host-url: redis
       redis-port: 6379
-      github-client-id: 9d8c01dd4e8fa7fd0603
-      github-client-secret: f4b08329739a23b8858d8c4f531a20e0e472b687
     depends_on:
       - redis
   tiny-url-api:
-    image: tiny-url/tiny-url-api
+    image: localhost:5001/tiny-url-api
     container_name: tiny-url-api
     ports:
       - "9093:9093"
@@ -45,8 +43,6 @@ services:
       mongodb-schema: tinyurldb
       mongodb-user: tinyuser
       mongodb-password: password
-      github-client-id: 9d8c01dd4e8fa7fd0603
-      github-client-secret: f4b08329739a23b8858d8c4f531a20e0e472b687
       KEY-GENERATOR-SERVER-URL: key-generator
       SHORT-URL-HOST: http://localhost:9093
     depends_on:

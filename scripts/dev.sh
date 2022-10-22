@@ -13,20 +13,36 @@ if [[ $2 == '--rebuild' ]]; then
   rebuild=1
 fi
 
-base_dir=${PWD}
-echo ">>> base dir: ${base_dir}"
-
-function to_dir() {
-    cd "$1" || exit
-    echo ">>> change dir: ${PWD}"
-}
+cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd
+cd ../
+echo ">>> root dir: ${PWD}"
 
 if [[ $rebuild == 1 ]]; then
   echo ">>> Building key-generator"
-  to_dir key-generator
+  cd key-generator || exit
   ./gradlew jibDockerBuild
-  to_dir ../
+  cd ../
+
+#  echo ">>> Building tiny-url-api"
+#  cd tiny-url-api || exit
+#  ./gradlew jibDockerBuild
+#  cd ../
 fi
 
-echo ">>> Firing docker"
-docker-compose "$docker_command" -d
+case $docker_command in
+  up)
+    echo ">>> Starting docker containers"
+    docker-compose up -d
+    ;;
+  restart)
+    echo ">>> Starting docker containers"
+    docker-compose restart
+    ;;
+  down)
+    echo ">>> Shutting down docker containers"
+    docker-compose down
+    ;;
+  *)
+    echo ">>> Unknown command !!"
+    ;;
+esac
