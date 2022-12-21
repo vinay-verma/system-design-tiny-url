@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: key-generator-service
+  name: key-generator-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: key-generator-service
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: key-generator-service
+    spec:
+      containers:
+        - name: tiny-url-key-generator
+          image: localhost:5000/key-generator
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8093
+          env:
+            - name: node-id
+              value: "101"
+            - name: redis-host
+              value: ${TINY_URL_REDIS_SERVICE_SERVICE_HOST}
+            - name: redis-port
+              value: ${TINY_URL_REDIS_SERVICE_SERVICE_PORT}
+            - name: replenish-threshold
+              value: "5"
+          resources: {}
+      restartPolicy: Always

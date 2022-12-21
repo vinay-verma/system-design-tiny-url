@@ -9,5 +9,5 @@ key-generator:
   replenish-threshold: ${key-replenish-threshold:200}
 
 redis:
-  hostName: ${redis-host-url}
+  host: ${redis-host}
   port: ${redis-port}

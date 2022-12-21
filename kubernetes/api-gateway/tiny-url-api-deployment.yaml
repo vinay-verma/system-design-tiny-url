@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tiny-url-api
+  name: tiny-url-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tiny-url-api
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: tiny-url-api
+    spec:
+      containers:
+        - image: localhost:5000/tiny-url-api
+          name: tiny-url-api
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+            - containerPort: 8000
+          resources: { }
+          env:
+            - name: KEY-GENERATOR-SERVER-URL
+              value: ${KEY_GENERATOR_SERVICE_PORT}
+            - name: SHORT-URL-HOST
+              value: https://my-tiny-url
+            - name: mongodb-password
+              value: password
+            - name: mongodb-schema
+              value: tinyurldb
+            - name: mongodb-url
+              value: ${TINY_URL_MONGODB_SERVICE_PORT}
+            - name: mongodb-user
+              value: tinyuser
+      restartPolicy: Always

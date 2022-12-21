@@ -11,15 +11,15 @@ import org.springframework.data.redis.core.RedisTemplate;
 @Configuration
 public class RedisConfig {
 
-    @Value("${redis.hostName}")
-    private String hostName;
+    @Value("${redis.host}")
+    private String host;
 
     @Value("${redis.port}")
     private Integer port;
 
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
-        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(hostName, port);
+        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(host, port);
         return new JedisConnectionFactory(configuration);
     }
 

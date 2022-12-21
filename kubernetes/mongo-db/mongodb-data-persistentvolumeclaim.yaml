@@ -1,9 +1,8 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  creationTimestamp: null
   labels:
-    io.kompose.service: mongodb-data
+    app: tiny-url-mongodb-service
   name: mongodb-data
 spec:
   accessModes:
@@ -11,4 +10,3 @@ spec:
   resources:
     requests:
       storage: 100Mi
-status: {}
