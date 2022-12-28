@@ -19,3 +19,4 @@ data:
     });
     db.createCollection('system_log');
     db.system_log.insert({ msg: 'initialised' });
+    console.log('anhdjshdkaa');

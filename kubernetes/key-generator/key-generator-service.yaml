@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: key-generator-service
-  name: key-generator-service
+  name: key-generator
 spec:
   ports:
     - protocol: TCP

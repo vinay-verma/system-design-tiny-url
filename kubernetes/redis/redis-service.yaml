@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: tiny-url-redis-service
-  name: tiny-url-redis-service
+  name: tiny-url-redis
 spec:
   ports:
     - protocol: TCP

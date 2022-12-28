@@ -22,6 +22,10 @@ spec:
               value: password
             - name: MONGO_INITDB_ROOT_USERNAME
               value: root
+            - name: MONGO_INITDB_DATABASE
+              value: tinyurldb
+            - name: MONGO_USER
+              value: tinyuser
           image: mongo
           name: tiny-url-mongo
           imagePullPolicy: IfNotPresent
@@ -31,6 +35,7 @@ spec:
           volumeMounts:
             - mountPath: /docker-entrypoint-initdb.d
               name: mongo-init-db
+              readOnly: true
             - mountPath: /data/db
               name: mongodb-data
       restartPolicy: Always

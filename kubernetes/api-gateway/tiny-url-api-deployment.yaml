@@ -18,14 +18,15 @@ spec:
       containers:
         - image: localhost:5000/tiny-url-api
           name: tiny-url-api
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
-            - containerPort: 8080
-            - containerPort: 8000
+            - containerPort: 9093
           resources: { }
           env:
+            - name: SERVER-PORT
+              value: ${TINY_URL_API_SERVICE_PORT}
             - name: KEY-GENERATOR-SERVER-URL
-              value: ${KEY_GENERATOR_SERVICE_PORT}
+              value: "http://${KEY_GENERATOR_SERVICE_HOST}:${KEY_GENERATOR_SERVICE_PORT}"
             - name: SHORT-URL-HOST
               value: https://my-tiny-url
             - name: mongodb-password
@@ -33,7 +34,7 @@ spec:
             - name: mongodb-schema
               value: tinyurldb
             - name: mongodb-url
-              value: ${TINY_URL_MONGODB_SERVICE_PORT}
+              value: "${TINY_URL_MONGODB_SERVICE_HOST}:${TINY_URL_MONGODB_SERVICE_PORT}"
             - name: mongodb-user
               value: tinyuser
       restartPolicy: Always

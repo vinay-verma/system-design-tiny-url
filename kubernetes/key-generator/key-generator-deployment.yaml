@@ -25,9 +25,9 @@ spec:
             - name: node-id
               value: "101"
             - name: redis-host
-              value: ${TINY_URL_REDIS_SERVICE_SERVICE_HOST}
+              value: ${TINY_URL_REDIS_SERVICE_HOST}
             - name: redis-port
-              value: ${TINY_URL_REDIS_SERVICE_SERVICE_PORT}
+              value: ${TINY_URL_REDIS_SERVICE_PORT}
             - name: replenish-threshold
               value: "5"
           resources: {}

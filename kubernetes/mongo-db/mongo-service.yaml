@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: tiny-url-mongodb-service
-  name: tiny-url-mongodb-service
+  name: tiny-url-mongodb
 spec:
   ports:
     - protocol: TCP
