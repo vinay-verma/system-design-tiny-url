@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: tiny-url-ingress
 spec:
-  ingressClassName: nginx
   rules:
     - host: mytinyurl.com
       http:
