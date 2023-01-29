@@ -26,15 +26,30 @@ spec:
             - name: SERVER-PORT
               value: ${TINY_URL_API_SERVICE_PORT}
             - name: KEY-GENERATOR-SERVER-URL
-              value: "http://${KEY_GENERATOR_SERVICE_HOST}:${KEY_GENERATOR_SERVICE_PORT}"
+              valueFrom:
+                configMapKeyRef:
+                  name: tiny-url-config
+                  key: KEY_GENERATOR_SERVER_URL
             - name: SHORT-URL-HOST
               value: http://mytinyurl.com
-            - name: mongodb-password
-              value: password
             - name: mongodb-schema
-              value: tinyurldb
+              valueFrom:
+                configMapKeyRef:
+                  name: tiny-url-config
+                  key: MONGODB_SCHEMA
             - name: mongodb-url
-              value: "${TINY_URL_MONGODB_SERVICE_HOST}:${TINY_URL_MONGODB_SERVICE_PORT}"
+              valueFrom:
+                configMapKeyRef:
+                  name: tiny-url-config
+                  key: MONGODB_URL
             - name: mongodb-user
-              value: tinyuser
+              valueFrom:
+                secretKeyRef:
+                  name: tiny-url-secrets
+                  key: MONGODB_USER
+            - name: mongodb-password
+              valueFrom:
+                secretKeyRef:
+                  name: tiny-url-secrets
+                  key: MONGODB_PASSWORD
       restartPolicy: Always
