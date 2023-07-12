@@ -1,9 +1,11 @@
 pipeline {
+    // may need to use docker agent with target image
     agent any
     environment {
         CI = 'true'
     }
     stages {
+        // probably not needed
         stage('Checkout') {
             steps {
                 git branch: 'jenkins', url: 'https://github.com/vinay-verma/system-design-tiny-url.git'
@@ -11,11 +13,13 @@ pipeline {
         }
         stage('Build key-generator') {
             steps {
-                sh 'cd key-generator && ./gradlew build'
+                sh 'java --version'
+                sh 'cd key-generator && ./gradlew --no-daemon --info --stacktrace clean build'
             }
         }
         stage('Build tiny-url-api') {
             steps {
+                sh 'java --version'
                 sh 'cd tiny-url-api && ./gradlew build'
             }
         }
